@@ -1,10 +1,12 @@
-package dictionary
+package dictionaries
 
-func CreateDictFromLines(lines []string) (dict map[int32]int64) {
+type FreqDict map[int32]int64
+
+func CreateFreqDictFromLines(lines []string) (dict FreqDict) {
 	dict = make(map[int32]int64, 0)
 	for _, line := range lines {
 
-		subDict := CreateDictFromLine(line)
+		subDict := CreateFreqDictFromLine(line)
 
 		// copying
 		for key, value := range subDict {
@@ -14,7 +16,7 @@ func CreateDictFromLines(lines []string) (dict map[int32]int64) {
 	return
 }
 
-func CreateDictFromLine(line string) (dict map[int32]int64) {
+func CreateFreqDictFromLine(line string) (dict FreqDict) {
 	dict = make(map[int32]int64, 0)
 	for _, symbol := range line {
 		dict[symbol]++

@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"strings"
 )
 
 func ReadFile(file *os.File) (lines []string, rErr error) {
@@ -16,7 +15,7 @@ func ReadFile(file *os.File) (lines []string, rErr error) {
 		bytes, err := reader.ReadBytes('\n')
 
 		//fmt.Println(string(bytes))
-		lines = append(lines, string(bytes)+"\n")
+		lines = append(lines, string(bytes))
 
 		if err != nil {
 			if err == io.EOF {
@@ -27,9 +26,6 @@ func ReadFile(file *os.File) (lines []string, rErr error) {
 			return
 		}
 	}
-
-	// Remove \n in last line because it's got EOF instead
-	lines[len(lines)-1] = strings.Replace(lines[len(lines)-1], "\n", "", -1)
 
 	return
 }

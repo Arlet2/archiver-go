@@ -10,7 +10,11 @@ func CreateFreqDictFromLines(lines []string) (dict FreqDict) {
 
 		// copying
 		for key, value := range subDict {
-			dict[key] = value
+			if _, ok := dict[key]; ok {
+				dict[key] += value
+			} else {
+				dict[key] = value
+			}
 		}
 	}
 	return

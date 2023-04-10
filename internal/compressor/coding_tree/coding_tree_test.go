@@ -7,11 +7,11 @@ import (
 )
 
 func TestGenerateCodingTree(t *testing.T) {
-	t.Log("Start checking generating coding tree")
+	t.Log("Start checking creating coding tree")
 	{
 		testID := 0
 
-		t.Logf("\tTest %d: check generating tree with even count of nodes", testID)
+		t.Logf("\tTest %d: check creating tree with even count of nodes", testID)
 		{
 			dict := dictionaries.FreqDict{5: 2, 0: 8, 4: 4, 7: 1} // sorted:  7(1) -> 5(2) -> 4(4) -> 0(8)
 			tree := CreateCodingTree(dict)
@@ -54,7 +54,7 @@ func TestGenerateCodingTree(t *testing.T) {
 		}
 		testID++
 
-		t.Logf("\tTest %d: check generating tree with odd count of nodes", testID)
+		t.Logf("\tTest %d: check creating tree with odd count of nodes", testID)
 		{
 			dict := dictionaries.FreqDict{20: 5, 5: 0, 30: 60} // sorted:  5(0) -> 20(5) -> 30(60)
 			tree := CreateCodingTree(dict)
@@ -90,7 +90,7 @@ func TestGenerateCodingTree(t *testing.T) {
 		}
 		testID++
 
-		t.Logf("\tTest %d: check generating tree with one node", testID)
+		t.Logf("\tTest %d: check creating tree with one node", testID)
 		{
 			dict := dictionaries.FreqDict{20: 5}
 			tree := CreateCodingTree(dict)
@@ -112,7 +112,7 @@ func TestGenerateCodingTree(t *testing.T) {
 		}
 		testID++
 
-		t.Logf("\tTest %d: check generating tree with none node", testID)
+		t.Logf("\tTest %d: check creating tree with none node", testID)
 		{
 			dict := dictionaries.FreqDict{}
 			tree := CreateCodingTree(dict)

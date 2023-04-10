@@ -6,11 +6,11 @@ import (
 )
 
 func TestCreateFreqDictFromLine(t *testing.T) {
-	t.Log("Start checking generating freq dict from line")
+	t.Log("Start checking creating freq dict from line")
 	{
 		testID := 0
 
-		t.Logf("\tTest %d: check simple generating freq dict", testID)
+		t.Logf("\tTest %d: check simple creating freq dict", testID)
 		{
 			line := "aabb{}[[["
 
@@ -27,7 +27,7 @@ func TestCreateFreqDictFromLine(t *testing.T) {
 		}
 		testID++
 
-		t.Logf("\tTest %d: check simple generating freq dict with empty line", testID)
+		t.Logf("\tTest %d: check simple creating freq dict with empty line", testID)
 		{
 			line := ""
 
@@ -47,11 +47,11 @@ func TestCreateFreqDictFromLine(t *testing.T) {
 }
 
 func TestCreateFreqDictFromLines(t *testing.T) {
-	t.Log("Start checking generating freq dict from lines")
+	t.Log("Start checking creating freq dict from lines")
 	{
 		testID := 0
 
-		t.Logf("\tTest %d: check simple generating freq dict", testID)
+		t.Logf("\tTest %d: check simple creating freq dict", testID)
 		{
 			lines := []string{"aabb{}[[[", "abbf"}
 
@@ -68,7 +68,7 @@ func TestCreateFreqDictFromLines(t *testing.T) {
 		}
 		testID++
 
-		t.Logf("\tTest %d: check simple generating freq dict with empty lines", testID)
+		t.Logf("\tTest %d: check simple creating freq dict with empty lines", testID)
 		{
 			var lines []string
 

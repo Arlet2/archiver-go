@@ -10,10 +10,10 @@ import (
 type CodingTree Node
 
 type Node struct {
-	leftChild  *Node
-	rightChild *Node
+	LeftChild  *Node
+	RightChild *Node
 
-	value int32
+	Value int32
 	freq  int64
 }
 
@@ -29,12 +29,12 @@ func CreateCodingTree(dict dictionaries.FreqDict) CodingTree {
 
 	// creating base free nodes tree
 	for index := range nodes {
-		nodes[index] = Node{leftChild: nil, rightChild: nil, value: sortedKeys[index], freq: dict[sortedKeys[index]]}
+		nodes[index] = Node{LeftChild: nil, RightChild: nil, Value: sortedKeys[index], freq: dict[sortedKeys[index]]}
 	}
 
 	for len(nodes) > 1 {
 		// merge nodes with the lowest freq
-		parentNode := Node{leftChild: &nodes[0], rightChild: &nodes[1], freq: nodes[0].freq + nodes[1].freq}
+		parentNode := Node{LeftChild: &nodes[0], RightChild: &nodes[1], freq: nodes[0].freq + nodes[1].freq}
 
 		// remove child nodes
 		nodes = nodes[2:]
@@ -61,11 +61,11 @@ func IsTreeEquals(tree *Node, tree1 *Node) bool {
 		return true
 	}
 
-	if tree.freq != tree1.freq || tree.value != tree1.value {
+	if tree.freq != tree1.freq || tree.Value != tree1.Value {
 		return false
 	}
 
-	return IsTreeEquals(tree.leftChild, tree1.leftChild) && IsTreeEquals(tree.rightChild, tree1.rightChild)
+	return IsTreeEquals(tree.LeftChild, tree1.LeftChild) && IsTreeEquals(tree.RightChild, tree1.RightChild)
 }
 
 func PrintTree(tree CodingTree) {
@@ -78,13 +78,13 @@ func dfsPrint(node *Node, rpref string, cpref string, lpref string) {
 		return
 	}
 
-	if node.rightChild != nil {
-		dfsPrint(node.rightChild, rpref+"  ", rpref+"/--", rpref+"|  ")
+	if node.RightChild != nil {
+		dfsPrint(node.RightChild, rpref+"  ", rpref+"/--", rpref+"|  ")
 	}
 
-	fmt.Printf(cpref+"(f: %d v: %d)\n", node.freq, node.value)
+	fmt.Printf(cpref+"(f: %d v: %d)\n", node.freq, node.Value)
 
-	if node.leftChild != nil {
-		dfsPrint(node.leftChild, lpref+"|  ", lpref+"\\--", lpref+"   ")
+	if node.LeftChild != nil {
+		dfsPrint(node.LeftChild, lpref+"|  ", lpref+"\\--", lpref+"   ")
 	}
 }

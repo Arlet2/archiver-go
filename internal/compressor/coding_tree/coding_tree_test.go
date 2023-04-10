@@ -18,27 +18,27 @@ func TestGenerateCodingTree(t *testing.T) {
 
 			expectedTree := CodingTree(Node{
 				freq: 15,
-				leftChild: &Node{
+				LeftChild: &Node{
 					freq: 7,
-					leftChild: &Node{
+					LeftChild: &Node{
 						freq: 3,
-						leftChild: &Node{
+						LeftChild: &Node{
 							freq:  1,
-							value: 7,
+							Value: 7,
 						},
-						rightChild: &Node{
+						RightChild: &Node{
 							freq:  2,
-							value: 5,
+							Value: 5,
 						},
 					},
-					rightChild: &Node{
+					RightChild: &Node{
 						freq:  4,
-						value: 4,
+						Value: 4,
 					},
 				},
-				rightChild: &Node{
+				RightChild: &Node{
 					freq:  8,
-					value: 0,
+					Value: 0,
 				},
 			})
 
@@ -61,20 +61,20 @@ func TestGenerateCodingTree(t *testing.T) {
 
 			expectedTree := CodingTree(Node{
 				freq: 65,
-				leftChild: &Node{
+				LeftChild: &Node{
 					freq: 5,
-					leftChild: &Node{
+					LeftChild: &Node{
 						freq:  0,
-						value: 5,
+						Value: 5,
 					},
-					rightChild: &Node{
+					RightChild: &Node{
 						freq:  5,
-						value: 20,
+						Value: 20,
 					},
 				},
-				rightChild: &Node{
+				RightChild: &Node{
 					freq:  60,
-					value: 30,
+					Value: 30,
 				},
 			})
 
@@ -97,7 +97,7 @@ func TestGenerateCodingTree(t *testing.T) {
 
 			expectedTree := CodingTree(Node{
 				freq:  5,
-				value: 20,
+				Value: 20,
 			})
 
 			if !IsTreeEquals((*Node)(&tree), (*Node)(&expectedTree)) {

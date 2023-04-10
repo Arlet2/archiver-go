@@ -1,4 +1,4 @@
-package dictionaries
+package encoding
 
 type FreqDict map[int32]int64
 

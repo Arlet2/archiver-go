@@ -1,7 +1,6 @@
-package coding_tree
+package encoding
 
 import (
-	"archiver/internal/compressor/dictionaries"
 	"fmt"
 	"testing"
 )
@@ -13,7 +12,7 @@ func TestGenerateCodingTree(t *testing.T) {
 
 		t.Logf("\tTest %d: check creating tree with even count of nodes", testID)
 		{
-			dict := dictionaries.FreqDict{5: 2, 0: 8, 4: 4, 7: 1} // sorted:  7(1) -> 5(2) -> 4(4) -> 0(8)
+			dict := FreqDict{5: 2, 0: 8, 4: 4, 7: 1} // sorted:  7(1) -> 5(2) -> 4(4) -> 0(8)
 			tree := CreateCodingTree(dict)
 
 			expectedTree := CodingTree(Node{
@@ -56,7 +55,7 @@ func TestGenerateCodingTree(t *testing.T) {
 
 		t.Logf("\tTest %d: check creating tree with odd count of nodes", testID)
 		{
-			dict := dictionaries.FreqDict{20: 5, 5: 0, 30: 60} // sorted:  5(0) -> 20(5) -> 30(60)
+			dict := FreqDict{20: 5, 5: 0, 30: 60} // sorted:  5(0) -> 20(5) -> 30(60)
 			tree := CreateCodingTree(dict)
 
 			expectedTree := CodingTree(Node{
@@ -92,7 +91,7 @@ func TestGenerateCodingTree(t *testing.T) {
 
 		t.Logf("\tTest %d: check creating tree with one Node", testID)
 		{
-			dict := dictionaries.FreqDict{20: 5}
+			dict := FreqDict{20: 5}
 			tree := CreateCodingTree(dict)
 
 			expectedTree := CodingTree(Node{
@@ -114,7 +113,7 @@ func TestGenerateCodingTree(t *testing.T) {
 
 		t.Logf("\tTest %d: check creating tree with none Node", testID)
 		{
-			dict := dictionaries.FreqDict{}
+			dict := FreqDict{}
 			tree := CreateCodingTree(dict)
 
 			expectedTree := CodingTree(Node{})

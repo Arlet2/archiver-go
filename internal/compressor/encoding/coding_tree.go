@@ -1,7 +1,6 @@
-package coding_tree
+package encoding
 
 import (
-	"archiver/internal/compressor/dictionaries"
 	"archiver/pkg/map_sort"
 	"fmt"
 	"sort"
@@ -17,7 +16,7 @@ type Node struct {
 	freq  int64
 }
 
-func CreateCodingTree(dict dictionaries.FreqDict) CodingTree {
+func CreateCodingTree(dict FreqDict) CodingTree {
 
 	if len(dict) == 0 {
 		return CodingTree{}

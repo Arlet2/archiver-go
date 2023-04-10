@@ -1,4 +1,4 @@
-package dictionaries
+package encoding
 
 import (
 	"reflect"

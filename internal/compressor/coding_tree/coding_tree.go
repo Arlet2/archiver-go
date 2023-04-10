@@ -7,11 +7,11 @@ import (
 	"sort"
 )
 
-type CodingTree node
+type CodingTree Node
 
-type node struct {
-	leftChild  *node
-	rightChild *node
+type Node struct {
+	leftChild  *Node
+	rightChild *Node
 
 	value int32
 	freq  int64
@@ -25,16 +25,16 @@ func CreateCodingTree(dict dictionaries.FreqDict) CodingTree {
 
 	sortedKeys := map_sort.SortMapByValues(dict, true)
 
-	nodes := make([]node, len(sortedKeys))
+	nodes := make([]Node, len(sortedKeys))
 
 	// creating base free nodes tree
 	for index := range nodes {
-		nodes[index] = node{leftChild: nil, rightChild: nil, value: sortedKeys[index], freq: dict[sortedKeys[index]]}
+		nodes[index] = Node{leftChild: nil, rightChild: nil, value: sortedKeys[index], freq: dict[sortedKeys[index]]}
 	}
 
 	for len(nodes) > 1 {
 		// merge nodes with the lowest freq
-		parentNode := node{leftChild: &nodes[0], rightChild: &nodes[1], freq: nodes[0].freq + nodes[1].freq}
+		parentNode := Node{leftChild: &nodes[0], rightChild: &nodes[1], freq: nodes[0].freq + nodes[1].freq}
 
 		// remove child nodes
 		nodes = nodes[2:]
@@ -51,7 +51,7 @@ func CreateCodingTree(dict dictionaries.FreqDict) CodingTree {
 	return CodingTree(nodes[0])
 }
 
-func IsTreeEquals(tree *node, tree1 *node) bool {
+func IsTreeEquals(tree *Node, tree1 *Node) bool {
 	if tree == nil && tree1 != nil || tree != nil && tree1 == nil {
 		return false
 	}
@@ -69,11 +69,11 @@ func IsTreeEquals(tree *node, tree1 *node) bool {
 }
 
 func PrintTree(tree CodingTree) {
-	dfsPrint((*node)(&tree), "", "", "")
+	dfsPrint((*Node)(&tree), "", "", "")
 	fmt.Println()
 }
 
-func dfsPrint(node *node, rpref string, cpref string, lpref string) {
+func dfsPrint(node *Node, rpref string, cpref string, lpref string) {
 	if node == nil {
 		return
 	}

@@ -13,43 +13,35 @@ type compare[V any] func(i, j V) bool
 // SortMapByValues sorts map by values in some order (use isAscending for choosing). Sort is stable.
 // Return sorted keys
 func SortMapByValues[K comparable, V ordered](m map[K]V, isAscending bool) []K {
-	keys := make([]K, 0)
-
-	for key := range m {
-		keys = append(keys, key)
+	var compare compare[V]
+	if isAscending {
+		compare = func(i, j V) bool {
+			return i < j
+		}
+	} else {
+		compare = func(i, j V) bool {
+			return i > j
+		}
 	}
 
-	sort.SliceStable(keys, func(i, j int) bool {
-		if isAscending {
-			return m[keys[i]] < m[keys[j]]
-		} else {
-			return m[keys[i]] > m[keys[j]]
-		}
-
-	})
-
-	return keys
+	return SortMapByValuesUsingCompare(m, compare)
 }
 
 // SortMapByKeys sorts map by keys in some order (use isAscending for choosing). Sort is stable.
 // Return sorted keys
 func SortMapByKeys[K ordered, V any](m map[K]V, isAscending bool) []K {
-	keys := make([]K, 0)
-
-	for key := range m {
-		keys = append(keys, key)
+	var compare compare[K]
+	if isAscending {
+		compare = func(i, j K) bool {
+			return i < j
+		}
+	} else {
+		compare = func(i, j K) bool {
+			return i > j
+		}
 	}
 
-	sort.SliceStable(keys, func(i, j int) bool {
-		if isAscending {
-			return keys[i] < keys[j]
-		} else {
-			return keys[i] > keys[j]
-		}
-
-	})
-
-	return keys
+	return SortMapByKeysUsingCompare(m, compare)
 }
 
 // SortMapByKeysUsingCompare sorts map by keys with using client compare function.

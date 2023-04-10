@@ -67,6 +67,10 @@ func IsTreeEquals(tree *Node, tree1 *Node) bool {
 	return IsTreeEquals(tree.LeftChild, tree1.LeftChild) && IsTreeEquals(tree.RightChild, tree1.RightChild)
 }
 
+func IsTreeEmpty(tree CodingTree) bool {
+	return tree.LeftChild == nil && tree.RightChild == nil && tree.Value == 0
+}
+
 func PrintTree(tree CodingTree) {
 	dfsPrint((*Node)(&tree), "", "", "")
 	fmt.Println()

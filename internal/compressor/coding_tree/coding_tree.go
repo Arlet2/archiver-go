@@ -17,7 +17,7 @@ type node struct {
 	freq  int64
 }
 
-func GenerateCodingTree(dict dictionaries.FreqDict) CodingTree {
+func CreateCodingTree(dict dictionaries.FreqDict) CodingTree {
 
 	if len(dict) == 0 {
 		return CodingTree{}

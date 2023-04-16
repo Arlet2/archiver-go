@@ -2,7 +2,6 @@ package readers
 
 import (
 	"bufio"
-	"fmt"
 	"io"
 	"os"
 )
@@ -19,7 +18,7 @@ func ReadFile(file *os.File) (lines []string, rErr error) {
 
 		if err != nil {
 			if err == io.EOF {
-				fmt.Println("EOF.")
+				//fmt.Println("EOF.")
 				break
 			}
 			rErr = err

@@ -6,15 +6,17 @@ import (
 	"sort"
 )
 
-type CodingTree Node
+type (
+	CodingTree Node
 
-type Node struct {
-	LeftChild  *Node
-	RightChild *Node
+	Node struct {
+		LeftChild  *Node
+		RightChild *Node
 
-	Value int32
-	freq  int64
-}
+		Value int32
+		freq  int64
+	}
+)
 
 func CreateCodingTree(dict FreqDict) CodingTree {
 

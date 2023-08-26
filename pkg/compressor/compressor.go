@@ -1,7 +1,7 @@
 package compressor
 
 import (
-	"archiver/internal/compressor/encoding"
+	"archiver/pkg/compressor/encoding"
 	"strconv"
 	"strings"
 )

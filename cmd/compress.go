@@ -15,9 +15,9 @@ func init() {
 }
 
 var compressCmd = &cobra.Command{
-	Use:   "compress [filename]",
+	Use:   "compress [filename] [output filename]",
 	Short: "Print the version of archiver",
-	Args:  cobra.ExactArgs(1),
+	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		file, err := os.Open(args[0])
 
@@ -27,31 +27,23 @@ var compressCmd = &cobra.Command{
 		}
 
 		lines, err := readers.ReadFile(file)
-		_ = file.Close()
+		file.Close()
 
 		freqDict := encoding.CreateFreqDictFromLines(lines)
-
-		/*
-			for key, value := range freqDict {
-				fmt.Print("\"", string(key), "\"", ": ", value, "\n")
-			}
-		*/
 
 		codingDict := encoding.CreateCodingDict(encoding.CreateCodingTree(freqDict))
 
 		lines, err = compressor.Compress(lines, codingDict)
 
-		fmt.Println(lines)
-
-		nfile, err := os.Create("compressed-test")
-		defer nfile.Close()
+		outputFile, err := os.Create(args[1] + ".eva")
 
 		if err != nil {
 			fmt.Println("Error: " + err.Error())
 			return
 		}
+		defer outputFile.Close()
 
-		err = writers.WriteFile(nfile, lines)
+		err = writers.WriteFile(outputFile, lines)
 
 		if err != nil {
 			fmt.Println("Error: " + err.Error())

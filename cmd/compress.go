@@ -16,7 +16,8 @@ func init() {
 
 var compressCmd = &cobra.Command{
 	Use:   "compress [filename] [output filename]",
-	Short: "Print the version of archiver",
+	Short: "Compress file in .eva archive file",
+	Long:  "Compress file in .eva archive file",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		file, err := os.Open(args[0])

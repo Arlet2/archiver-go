@@ -19,6 +19,7 @@ func init() {
 var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "Print the version of archiver",
+	Long:  "Print the version of archiver",
 	Args:  cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
 		revision := version.Revision

@@ -9,8 +9,9 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "archiver",
 	Short: "Archiver is a program for compressing or decompressing a data",
-	Long:  `Archiver is a program for compressing or decompressing a data with .EVA (exclusive valuable archive) file`,
-	Args:  cobra.NoArgs,
+	Long: "Archiver is a simple program for compressing or decompressing files.\n" +
+		"All compressed files will save as .eva archive file (Exclusive Valuable Archive).",
+	Args: cobra.NoArgs,
 }
 
 func Execute() {

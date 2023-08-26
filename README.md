@@ -2,7 +2,7 @@
 ### What is it?
 Archiver is a simple program for compressing or decompressing files.
 
-All compressed files will save as .eva archive file.
+All compressed files will save as .eva archive file (Exclusive Valuable Archive).
 
 ## EVA file format
 
